@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,500;1,700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <title>Leaderboard</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&family=Varela+Round&display=swap');
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+
+        body {
+            background-image: url("images/leader.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            }
+            .heading{
+            background-color: rgb(101,132,54);
+            font-family: 'Lora', serif;
+            font-size: 3.0rem;
+            color: rgb(42,95,45);
+            text-align: center;
+            margin-top: 0px;
+            padding-top: 4px;
+            padding-bottom: 4px;
+            
+        }
+
+        .leaderboard {
+            font-family: 'Poppins', sans-serif;;
+            border-radius: 20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+
+            background-color:#BEADFA;
+
+            box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2),
+                0px 3px 20px 0px rgba(0, 0, 0, 0.4);
+
+            transform: translate(-50%, -50%);
+            transition: all 0.3s ease;
+            width:400px;
+        }
+
+        .leaderboard h1 {
+            font-size: 30px;
+            text-align: center;
+            padding: 16px 0px 0px 0px ;
+        }
+
+        .leaderboard table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .leaderboard th,
+        .leaderboard td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        .leaderboard th {
+            background-color: #658436;
+        }
+
+        .leaderboard tr:nth-child(even) {
+            background-color:#DFCCFB;
+        }
+
+        .leaderboard tr:hover {
+            background-color: #e0e0e0;
+        }
+
+        .leaderboard .buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 15px;
+            height: 60px;
+            border-top: 1px solid lightgrey;
+        }
+
+        .leaderboard .buttons button {
+            margin: 0 5px;
+            border: 1px solid transparent;
+            font-size: 16px;
+            font-weight: 500;
+            height: 40px;
+            width: 100px;
+            color: #fff;
+            border-radius: 5px;
+            font-family: 'Varela Round', sans-serif;
+            transition: all 0.25s ease;
+        }
+
+        .leaderboard .buttons button.exit {
+            background: #658436;
+            border: 1px solid #658436;
+            color: #fff;
+        }
+
+        .leaderboard .buttons button.exit:hover {
+            background: #405423;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="heading">Quiz on flowers</div>
+    <div class="leaderboard">
+        <h1>Leaderboard</h1>
+        <table>
+            <tr>
+                <th>Rank</th>
+                <th>Name</th>
+                <th>Score</th>
+            </tr>
+
+        </table>
+        <div class="buttons">
+            <button class="exit" onclick="goToFrontPage()">Exit</button>
+        </div>
+    </div>
+
+</body>
+<script>
+    function goToFrontPage() {
+        // Redirect to front.html when the "Exit" button is clicked
+        window.location.href = 'front.html';
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+        const leaderboardTable = document.querySelector('.leaderboard table');
+        // Retrieve the usernames and scores from local storage
+        const scores = JSON.parse(localStorage.getItem('scores')) || [];
+
+        // Sort the scores in descending order
+        scores.sort((a, b) => b.score - a.score);
+
+        // Display the scores in the table
+        for (let i = 0; i < scores.length; i++) {
+            const rank = i + 1;
+            const name = scores[i].userName;
+            const score = scores[i].score;
+
+            // Create a new table row and populate it with the data
+            const row = document.createElement('tr');
+            row.innerHTML = `<td>${rank}</td><td>${name}</td><td>${score}</td>`;
+
+            // Append the row to the table
+            leaderboardTable.appendChild(row);
+        }
+    });
+</script>
+
+</html>

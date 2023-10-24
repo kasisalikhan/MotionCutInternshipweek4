@@ -1,0 +1,73 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: radial-gradient(#fff,#d6ffd9);
+}
+
+.intro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-container {
+    background-color: #9dae33;
+    border: 1px solid #959f0c00;
+    border-radius: 20px;
+    padding: 60px;
+    text-align: center;
+    width: 300px;
+    margin-top: 125px;
+}
+h2 {
+    font-size: 35px;
+    margin-top: 5px;
+    color:#2a5f2d;
+}
+
+form {
+    text-align: left;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 86%;
+    padding: 10px 20px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 1rem;
+}
+
+/* Center the submit button horizontally within the login-container */
+button {
+    width: 100%;
+    background-color: #e49c9c;
+    color: #fff;
+    padding: 10px 20px;
+    border:solid 0.1rem #e49c9c;
+    border-radius: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Add margin to the top of the submit button to push it down */
+button:hover {
+    background-color:#ac6161;
+    color:#fff;
+    border:solid 0.1rem #ac6161;
+    border-radius: 1rem;
+}
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

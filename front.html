@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Quiz App - Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,500;1,700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="front.css">
+    <style>
+        body {
+            background-image: url("images/quiz.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            font-family: 'Poppins', sans-serif;;
+
+        }
+        .heading{
+    background-color: rgb(101,132,54);
+    font-family: 'Lora', serif;
+    font-size: 3.0rem;
+    color: rgb(42,95,45);
+    text-align: center;
+    margin-top: 0px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    
+}
+
+        input {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="heading">Quiz on flowers</div>
+    <section class="intro">
+        <div class="login-container">
+            <div class="login">
+                <h2>Welcome</h2>
+            </div>
+            <div>
+                <form id="login-form">
+                    <div class="info">
+                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                        <br><br>
+                    </div>
+                    <div class="button">
+                        <button type="submit" id="submitBtn">Start</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const loginForm = document.getElementById("login-form");
+            const submitButton = document.getElementById("submitBtn");
+
+            function saveUsernameToLocalStorage(username) {
+                if (typeof Storage !== "undefined") {
+                    localStorage.setItem('userName', username); // Save the username as 'userName'
+                } else {
+                    alert("Local storage is not supported in your browser.");
+                }
+            }
+
+
+            loginForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+                const name = document.getElementById("name").value;
+
+                // Call the function to save the username to the array
+                saveUsernameToLocalStorage(name);
+
+                // Redirect to "index.html"
+                window.location.href = "index.html";
+            });
+        });
+    </script>
+</body>
+
+</html>
